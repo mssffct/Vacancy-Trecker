@@ -2,7 +2,7 @@ from typing import Union
 
 from fastapi import APIRouter
 
-from app.tags import USERS_TAG
+from tags import USERS_TAG
 
 router = APIRouter(
     prefix="/users",

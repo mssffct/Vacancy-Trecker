@@ -2,7 +2,7 @@ from typing import Union
 
 from fastapi import APIRouter
 
-from app.tags import RESULTS_TAG
+from tags import RESULTS_TAG
 
 router = APIRouter(
     prefix="/results",

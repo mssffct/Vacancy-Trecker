@@ -2,7 +2,7 @@ from typing import Union
 
 from fastapi import APIRouter
 
-from app.tags import JOBS_TAG
+from tags import JOBS_TAG
 
 router = APIRouter(
     prefix="/jobs",

@@ -1,15 +1,29 @@
 from fastapi import FastAPI
 
-from app.routers import users, jobs, results
+from routers import *
+from database import Base, SessionLocal, engine
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     description="This application allows you to track statistics on various vacancies and job seekers",
     dependencies=[]
 )
 
-app.include_router(users.router)
-app.include_router(jobs.router)
-app.include_router(results.router)
+
+# Dependency
+def get_db():
+    #TODO fix db connection issue
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
+app.include_router(users_router)
+app.include_router(jobs_router)
+app.include_router(results_router)
 
 
 @app.get("/")
